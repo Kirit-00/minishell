@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"curses.h": "c",
+		"minishell.h": "c",
+		"rlstdc.h": "c",
+		"rltypedefs.h": "c"
+	}
+}
