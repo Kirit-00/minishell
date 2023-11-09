@@ -1,12 +1,9 @@
+SRCS =	main.c
+
+CC = @gcc
 NAME = minishell
-CC = gcc
-RM = rm -rf
-CFLAGS = -Wall -Werror -Wextra -lreadline
-
-SRCS = main.c
-
-FLAGS_DATARACE = -g -fsanitize=address
-
+CFLAGS = -Wall -Wextra -Werror
+RM = @rm -rf
 RED=\033[31m
 YELLOW=\033[33m
 GREEN=\033[32m
@@ -15,29 +12,45 @@ BLUE=\033[34m
 MAGENTA=\033[35m
 RESET=\033[0m
 
-all: title  $(NAME)
+OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(SRCS)
-	@$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-	@rm -rf *.dSYM
+READLINE = readline
+
+all: title $(READLINE) $(NAME)
+
+
+$(READLINE):
+	curl -O https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz
+	tar -xvf readline-8.2.tar.gz
+	cd readline-8.2 && ./configure --prefix=${PWD}/readline
+	cd readline-8.2 && make install
 
 title:
 	@clear
-	@echo "Minishell $(CYAN)By maltun$(RESET)";
-	@echo "";	
+	@echo "$(YELLOW)███╗   ███╗██╗███╗   ██╗██╗    ███████╗██╗  ██╗███████╗██╗     ██╗     ";
+	@echo "████╗ ████║██║████╗  ██║██║    ██╔════╝██║  ██║██╔════╝██║     ██║     ";
+	@echo "██╔████╔██║██║██╔██╗ ██║██║    ███████╗███████║█████╗  ██║     ██║     ";
+	@echo "██║╚██╔╝██║██║██║╚██╗██║██║    ╚════██║██╔══██║██╔══╝  ██║     ██║     ";
+	@echo "██║ ╚═╝ ██║██║██║ ╚████║██║    ███████║██║  ██║███████╗███████╗███████╗";
+	@echo "╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝    ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝";
 
-tittle:
-	@clear
-	@echo "$(GREEN)****** Cleaned ******$(RESET)"
-data_race:
-	@$(CC) $(FLAGS_DATARACE) $(SRCS) -o $(NAME)	
+$(NAME): $(OBJS)
+	@make -C libft/
+	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) -L${PWD}/readline/lib  -I${PWD}/readline/include/ -lreadline
+	@echo "$(GREEN)Minishell $(CYAN)Compiled ✓$(RESET)";
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@ -I${PWD}/readline/include/
+
+fclean: clean
+	$(RM) $(NAME)
+	@rm -rf readline-8.2 readline-8.2.tar.gz
 
 clean:
-	@$(RM) $(NAME) *.dSYM
-
-fclean: tittle clean
-	@$(RM) $(NAME) 
+	$(RM) $(OBJS)
+	@echo "$(YELLOW)Minishell $(RED)Deleted x$(RESET)";
+	@make clean -C libft/
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all fclean clean re

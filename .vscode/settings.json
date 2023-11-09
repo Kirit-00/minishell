@@ -3,6 +3,8 @@
 		"curses.h": "c",
 		"minishell.h": "c",
 		"rlstdc.h": "c",
-		"rltypedefs.h": "c"
+		"rltypedefs.h": "c",
+		"history.h": "c",
+		"readline.h": "c"
 	}
 }
