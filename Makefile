@@ -36,7 +36,7 @@ title:
 
 $(NAME): $(OBJS)
 	@make -C libft/
-	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) -L${PWD}/readline/lib  -I${PWD}/readline/include/ -lreadline
+	$(CC) -o $(NAME) $(OBJS) libft/libft.a $(CFLAGS) -L${PWD}/readline/lib  -I${PWD}/readline/include/ -lreadline
 	@echo "$(GREEN)Minishell $(CYAN)Compiled ✓$(RESET)";
 
 %.o: %.c
@@ -49,7 +49,7 @@ fclean: clean
 clean:
 	$(RM) $(OBJS)
 	@echo "$(YELLOW)Minishell $(RED)Deleted x$(RESET)";
-	@make clean -C libft/
+	@make fclean -C libft/
 
 re: fclean all
 

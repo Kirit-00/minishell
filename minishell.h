@@ -6,7 +6,7 @@
 /*   By: maltun <maltun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:20:14 by maltun            #+#    #+#             */
-/*   Updated: 2023/11/09 16:35:53 by maltun           ###   ########.fr       */
+/*   Updated: 2023/11/09 16:56:55 by maltun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft/libft.h"
+
+typedef struct s_struct
+{
+	char	*cmd;
+}	t_struct;
 
 #endif
