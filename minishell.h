@@ -6,7 +6,7 @@
 /*   By: maltun <maltun@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:20:14 by maltun            #+#    #+#             */
-/*   Updated: 2023/11/09 16:56:55 by maltun           ###   ########.fr       */
+/*   Updated: 2023/11/15 00:16:50 by maltun           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ typedef struct s_struct
 {
 	char	*cmd;
 }	t_struct;
+
+int	check_arg(char **av, int ac);
 
 #endif

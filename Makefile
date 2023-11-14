@@ -1,4 +1,4 @@
-SRCS =	main.c
+SRCS =	main.c error.c
 
 CC = @gcc
 NAME = minishell
