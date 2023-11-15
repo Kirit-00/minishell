@@ -1,4 +1,4 @@
-SRCS =	main.c error.c
+SRCS =	main.c error_management.c
 
 CC = @gcc
 NAME = minishell

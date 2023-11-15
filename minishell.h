@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maltun <maltun@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: maltun <maltun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:20:14 by maltun            #+#    #+#             */
-/*   Updated: 2023/11/15 00:16:50 by maltun           ###   ########lyon.fr   */
+/*   Updated: 2023/11/15 15:20:14 by maltun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_struct
 	char	*cmd;
 }	t_struct;
 
-int	check_arg(char **av, int ac);
+int		check_arg(char **av, int ac);
+void	check_quote(t_struct *list);
 
 #endif

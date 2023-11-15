@@ -6,11 +6,21 @@
 /*   By: maltun <maltun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:22:11 by maltun            #+#    #+#             */
-/*   Updated: 2023/11/15 01:50:48 by maltun           ###   ########.fr       */
+/*   Updated: 2023/11/15 15:53:21 by maltun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	get_cmd_line(t_struct *list)
+{
+	if (list->cmd)
+		free(list->cmd);
+	list->cmd = readline("\033[36mMinishell: \033[33m");
+	check_quote(list);
+	if (list->cmd && ft_strlen(list->cmd) != 0)
+		add_history(list->cmd);
+}
 
 int	main(int ac, char **av, char **env)
 {
@@ -24,11 +34,7 @@ int	main(int ac, char **av, char **env)
 	(void)env;
 	while (1)
 	{
-		if (list->cmd)
-			free(list->cmd);
-		list->cmd = readline("\033[36mMinishell: \033[33m");
-		if (list->cmd && ft_strlen(list->cmd) != 0)
-			add_history(list->cmd);
+		get_cmd_line(list);
 	}
 	return (0);
 }
