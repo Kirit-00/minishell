@@ -36,7 +36,7 @@ title:
 
 $(NAME): $(OBJS)
 	@make -C libft/
-	$(CC) -o $(NAME) $(OBJS) libft/libft.a $(CFLAGS) -L${PWD}/readline/lib  -I${PWD}/readline/include/ -lreadline
+	$(CC) -o $(NAME) $(OBJS) libft/libft.a $(CFLAGS) -L${PWD}/readline/lib  -I${PWD}/readline/include/ -lreadline -ltermcap -ltinfo
 	@echo "$(GREEN)Minishell $(CYAN)Compiled ✓$(RESET)";
 
 %.o: %.c
