@@ -1,4 +1,4 @@
-SRCS =	main.c error_management.c
+SRCS =	main.c error_management.c parser.c
 
 CC = @gcc
 NAME = minishell
@@ -36,7 +36,7 @@ title:
 
 $(NAME): $(OBJS)
 	@make -C libft/
-	$(CC) -o $(NAME) $(OBJS) libft/libft.a $(CFLAGS) -L${PWD}/readline/lib  -I${PWD}/readline/include/ -lreadline -ltermcap -ltinfo
+	$(CC) -o $(NAME) $(OBJS) libft/libft.a $(CFLAGS) -L${PWD}/readline/lib  -I${PWD}/readline/include/ -lreadline #-ltermcap -ltinfo
 	@echo "$(GREEN)Minishell $(CYAN)Compiled ✓$(RESET)";
 
 %.o: %.c

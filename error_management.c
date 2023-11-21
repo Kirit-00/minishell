@@ -6,7 +6,7 @@
 /*   By: maltun <maltun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 01:44:13 by maltun            #+#    #+#             */
-/*   Updated: 2023/11/15 16:11:58 by maltun           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:14:59 by maltun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,3 @@ void	exit_error(t_struct *list, char *message)
 	free(list);
 	exit(2);
 }
-
-// void	check_quote(t_struct *list)
-// {
-// 	int	i;
-// 	int	quote;
-// 	int	quote2;
-
-// 	i = 0;
-// 	quote = 0;
-// 	quote2 = 0;
-// 	while (list->cmd[i])
-// 	{
-// 		if (!quote2 && list->cmd[i] == '\'' && (!i || \
-// 		(list->cmd[i - 1] && list->cmd[i - 1] != '\\')))
-// 			quote++;
-// 		if (!quote && list->cmd[i] == '\"' && (!i || \
-// 		(list->cmd[i - 1] && list->cmd[i - 1] != '\\')))
-// 			quote2++;
-// 		i++;
-// 	}
-// 	if (quote % 2 || quote2 % 2)
-// 		exit_error(list, "you have to close \" or \'");
-// }
