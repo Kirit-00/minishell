@@ -6,7 +6,7 @@
 /*   By: maltun <maltun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:22:11 by maltun            #+#    #+#             */
-/*   Updated: 2023/11/21 18:49:26 by maltun           ###   ########.fr       */
+/*   Updated: 2023/11/21 23:55:53 by maltun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	main(int ac, char **av, char **env)
 	{
 		get_cmd_line(list);
 		word_by_word(list, lexer);
+		/*while (lexer->next)
+		{
+			printf("(word: %s) (token: %u) (index :%d)\n", lexer->str, lexer->token, lexer->i);
+			lexer = lexer->next;
+		}*/
 	}
 	return (0);
 }
